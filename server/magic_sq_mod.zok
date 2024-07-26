@@ -1,0 +1,23 @@
+
+
+def main(private field[9] sq, private field sum) {
+  bool sum_ok = 
+  
+  // hz
+  sq[0] + sq[1] + sq[2] == sum &&
+  sq[3] + sq[4] + sq[5] == sum &&
+  sq[6] + sq[7] + sq[8] == sum &&
+  
+  // vt
+  sq[0] + sq[3] + sq[6] == sum &&
+  sq[1] + sq[4] + sq[7] == sum &&
+  sq[2] + sq[5] + sq[8] == sum &&
+  
+  // diag
+  sq[0] + sq[4] + sq[8] == sum &&
+  sq[2] + sq[4] + sq[6] == sum;
+  
+  assert(sum_ok); 
+  
+  return;
+}
