@@ -31,4 +31,7 @@ yarn-error.log*
 .env.production.local
 
 # vercel
-.vercelnode_modules/
+.vercel
+node_modules/
+**/node_modules/
+*/node_modules/
