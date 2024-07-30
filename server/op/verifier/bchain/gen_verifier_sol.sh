@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+export PATH=$PATH:/home/ant/.zokrates/bin
 FILE="truffle-config.js"     
 if [ ! -f $FILE ]; then
   echo 'doing truffle init..'

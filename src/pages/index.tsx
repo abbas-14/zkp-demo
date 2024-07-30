@@ -17,11 +17,6 @@ import { MagicSquare } from "../components/MagicSquare";
 import { MainContainer } from "../components/MainContainer";
 import { SourceCodeModal } from "../components/SourceCodeModal";
 
-// [
-//   ["31", "73", "7"],
-//   ["13", "37", "61"],
-//   ["67", "1", "43"],
-// ];
 
 const defaultValues = [
   ["", "", "7"],
@@ -55,9 +50,11 @@ const Index = (props) => {
         // if there is not 200 ok from backend, handle it here
         //
         let resp = await axios.post('http://localhost:3001/api/prove', { data: [...inputs, "111"] });
-        resp = resp.data
         console.log('response from api: ', resp)
+        resp = resp.data.proof ? resp.data.proof : resp.data
         if(resp.proof) {
+          localStorage.setItem('abi', resp.abi)
+          localStorage.setItem('ctaddr', resp.ctAddr)
           setProof({ proof: resp.proof });
           toast({
             title: "Yay!",
@@ -68,9 +65,6 @@ const Index = (props) => {
             isClosable: true,
           });
         } else {
-          const getMsg = _ => {
-            return 
-          }
           toast({
             title: "Whoops!",
             description: resp.msg == 'proof-err' ? "Your solution is incorrect :(" : resp.msg,
